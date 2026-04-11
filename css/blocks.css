@@ -1,0 +1,552 @@
+/**
+ * Scratch S2 编辑器 - 积木拼图样式
+ * 精心设计的拼图形状，丝滑连接效果
+ */
+
+/* ============================================
+   积木基础样式
+   ============================================ */
+
+/* 积木库中的积木 */
+.block-item {
+    position: relative;
+    background: var(--block-motion);
+    color: white;
+    padding: 10px 14px 16px 14px;
+    margin: 0 0 6px 0;
+    border-radius: 4px;
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    cursor: grab;
+    user-select: none;
+    min-width: 140px;
+    min-height: 36px;
+    box-shadow: 
+        0 3px 0 rgba(0, 0, 0, 0.2),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.15s ease;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* 积木顶部凸起 - 拼图凸槽 */
+.block-item::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 20px;
+    width: 16px;
+    height: 6px;
+    background: inherit;
+    border-radius: 3px 3px 0 0;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+/* 积木底部凹槽 - 拼图凹槽 */
+.block-item::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 20px;
+    width: 16px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 0 0 3px 3px;
+    z-index: 0;
+}
+
+/* 积木悬停效果 */
+.block-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 5px 0 rgba(0, 0, 0, 0.15),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.1),
+        0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 积木拖动效果 */
+.block-item:active {
+    cursor: grabbing;
+    transform: scale(0.98);
+}
+
+/* 积木颜色 - 积木库 */
+.block-item.block-motion { background: var(--block-motion); }
+.block-item.block-looks { background: var(--block-looks); }
+.block-item.block-sound { background: var(--block-sound); }
+.block-item.block-events { background: var(--block-events); color: #333; }
+.block-item.block-control { background: var(--block-control); }
+.block-item.block-sensing { background: var(--block-sensing); }
+.block-item.block-operators { background: var(--block-operators); }
+.block-item.block-variables { background: var(--block-variables); }
+.block-item.block-myblocks { background: var(--block-myblocks); }
+
+/* ============================================
+   工作区中的积木 - 拼图连接效果
+   ============================================ */
+
+.workspace-block {
+    position: absolute;
+    background: var(--block-motion);
+    color: white;
+    padding: 12px 16px 20px 16px;
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    user-select: none;
+    min-width: 160px;
+    min-height: 44px;
+    border-radius: 4px;
+    box-shadow: 
+        0 4px 0 rgba(0, 0, 0, 0.15),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    transition: 
+        transform 0.1s ease,
+        box-shadow 0.1s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+}
+
+/* 工作区积木顶部凸起 */
+.workspace-block::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 20px;
+    width: 18px;
+    height: 6px;
+    background: inherit;
+    border-radius: 3px 3px 0 0;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    transition: all 0.15s ease;
+}
+
+/* 工作区积木底部凹槽 */
+.workspace-block::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 20px;
+    width: 18px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 0 0 3px 3px;
+    z-index: 0;
+    transition: all 0.15s ease;
+}
+
+/* 工作区积木颜色 */
+.workspace-block.block-motion { background: var(--block-motion); }
+.workspace-block.block-looks { background: var(--block-looks); }
+.workspace-block.block-sound { background: var(--block-sound); }
+.workspace-block.block-events { background: var(--block-events); color: #333; }
+.workspace-block.block-control { background: var(--block-control); }
+.workspace-block.block-sensing { background: var(--block-sensing); }
+.workspace-block.block-operators { background: var(--block-operators); }
+.workspace-block.block-variables { background: var(--block-variables); }
+.workspace-block.block-myblocks { background: var(--block-myblocks); }
+
+/* ============================================
+   积木拖动状态
+   ============================================ */
+
+.workspace-block.dragging {
+    transform: scale(1.02) rotate(1deg);
+    box-shadow: 
+        0 8px 0 rgba(0, 0, 0, 0.1),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.1),
+        0 15px 30px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    cursor: grabbing;
+}
+
+/* 靠近连接时的预览效果 */
+.workspace-block.near-connect {
+    animation: blockPulse 0.4s ease-in-out infinite;
+}
+
+@keyframes blockPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 
+            0 4px 0 rgba(0, 0, 0, 0.15),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    }
+    50% { 
+        transform: scale(1.02);
+        box-shadow: 
+            0 4px 0 rgba(0, 0, 0, 0.15),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.1),
+            0 0 0 3px rgba(76, 151, 255, 0.3);
+    }
+}
+
+/* 连接成功动画 */
+.workspace-block.connected {
+    animation: connectBounce 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes connectBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+/* 已连接的积木组 - 隐藏凹凸槽 */
+.workspace-block.has-block-below::after {
+    background: transparent;
+    height: 0;
+}
+
+.workspace-block.has-block-above::before {
+    background: transparent;
+    height: 0;
+}
+
+/* ============================================
+   控制积木（C型积木）
+   ============================================ */
+
+.workspace-block.control-block {
+    padding-bottom: 50px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/* 控制积木内部区域 */
+.workspace-block.control-block .control-inner {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    min-height: 40px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+/* C型积木底部连接槽 */
+.workspace-block.control-block::after {
+    bottom: -3px;
+    left: 20px;
+}
+
+/* ============================================
+   帽子积木（事件积木）
+   ============================================ */
+
+.workspace-block.hat-block {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-top: 14px;
+}
+
+.workspace-block.hat-block::before {
+    display: none;
+}
+
+/* ============================================
+   报告积木（圆角矩形）
+   ============================================ */
+
+.workspace-block.reporter-block {
+    border-radius: 20px;
+    padding: 8px 14px;
+    min-height: 32px;
+}
+
+.workspace-block.reporter-block::before,
+.workspace-block.reporter-block::after {
+    display: none;
+}
+
+/* ============================================
+   布尔积木（六边形）
+   ============================================ */
+
+.workspace-block.boolean-block {
+    padding: 8px 20px;
+    min-height: 32px;
+    clip-path: polygon(
+        10px 0%,
+        calc(100% - 10px) 0%,
+        100% 50%,
+        calc(100% - 10px) 100%,
+        10px 100%,
+        0% 50%
+    );
+}
+
+.workspace-block.boolean-block::before,
+.workspace-block.boolean-block::after {
+    display: none;
+}
+
+/* ============================================
+   删除按钮
+   ============================================ */
+
+.workspace-block .delete-block {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 22px;
+    height: 22px;
+    background: var(--danger);
+    border-radius: 50%;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.15s ease;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(255, 102, 26, 0.4);
+}
+
+.workspace-block:hover .delete-block {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.workspace-block .delete-block:hover {
+    background: #CC0000;
+    transform: scale(1.15);
+}
+
+/* ============================================
+   连接指示器
+   ============================================ */
+
+.connection-indicator {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(76, 151, 255, 0.4);
+    border: 2px solid var(--primary);
+    animation: indicatorPulse 0.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes indicatorPulse {
+    0%, 100% { 
+        transform: scale(1); 
+        opacity: 0.8; 
+    }
+    50% { 
+        transform: scale(1.4); 
+        opacity: 0.4; 
+    }
+}
+
+/* 连接线 */
+.connection-line {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    transform-origin: left center;
+    pointer-events: none;
+    z-index: 999;
+    animation: lineFadeIn 0.2s ease;
+}
+
+@keyframes lineFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ============================================
+   吸附预览
+   ============================================ */
+
+.snap-preview {
+    position: absolute;
+    background: rgba(76, 151, 255, 0.2);
+    border: 2px dashed var(--primary);
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 998;
+    animation: snapPreviewPulse 0.8s ease-in-out infinite;
+}
+
+@keyframes snapPreviewPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* ============================================
+   积木输入字段
+   ============================================ */
+
+.block-input {
+    display: inline-flex;
+    align-items: center;
+    min-width: 40px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 0 8px;
+    margin: 0 4px;
+    font-size: var(--font-size-md);
+    font-weight: 400;
+    cursor: text;
+    transition: all 0.15s ease;
+}
+
+.block-input:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.block-input:focus-within {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.block-input input {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+    width: 100%;
+    outline: none;
+    text-align: center;
+}
+
+/* 数字输入 */
+.block-input.number-input {
+    min-width: 36px;
+}
+
+/* 字符串输入 */
+.block-input.string-input {
+    min-width: 60px;
+}
+
+/* 下拉选择 */
+.block-input.dropdown-input {
+    position: relative;
+    cursor: pointer;
+}
+
+.block-input.dropdown-input::after {
+    content: '▼';
+    font-size: 8px;
+    margin-left: 4px;
+    opacity: 0.7;
+}
+
+/* 颜色输入 */
+.block-input.color-input {
+    width: 32px;
+    height: 24px;
+    padding: 2px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.block-input.color-input input[type="color"] {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* ============================================
+   嵌套积木输入
+   ============================================ */
+
+.block-input.nested-block {
+    background: transparent;
+    padding: 0;
+    min-width: 50px;
+    min-height: 28px;
+}
+
+.block-input.nested-block .workspace-block {
+    position: relative;
+    transform: scale(0.85);
+    transform-origin: left center;
+}
+
+/* ============================================
+   积木图标
+   ============================================ */
+
+.block-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+/* 绿旗图标 */
+.block-icon.green-flag {
+    color: #2ECC40;
+}
+
+/* ============================================
+   注释积木
+   ============================================ */
+
+.workspace-block.commented {
+    opacity: 0.5;
+}
+
+.workspace-block.commented::before {
+    content: '💭';
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    font-size: 16px;
+}
+
+/* ============================================
+   禁用积木
+   ============================================ */
+
+.workspace-block.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+}
+
+/* ============================================
+   积木分组样式
+   ============================================ */
+
+.block-group {
+    position: relative;
+}
+
+.block-group.selected {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
+
+/* ============================================
+   响应式调整
+   ============================================ */
+
+@media (max-width: 1200px) {
+    .workspace-block {
+        font-size: var(--font-size-sm);
+        min-width: 140px;
+    }
+    
+    .block-input {
+        height: 22px;
+        padding: 0 6px;
+    }
+}

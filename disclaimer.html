@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>免责声明 - Scratch S2 图形化编程</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4C97FF 0%, #9966FF 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+            color: #333;
+        }
+        
+        h2 {
+            color: #4C97FF;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2:first-child {
+            margin-top: 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .warning-box h3 {
+            color: #856404;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border: 2px solid #4C97FF;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .info-box h3 {
+            color: #2196f3;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 30px 40px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .footer .version {
+            font-weight: 600;
+            color: #4C97FF;
+        }
+        
+        .footer .date {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4C97FF;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: rgba(76, 151, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: rgba(76, 151, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffd700 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 90%;
+        }
+        
+        strong {
+            color: #333;
+        }
+        
+        em {
+            font-style: normal;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <i class="fas fa-exclamation-triangle"></i>
+                免责声明
+            </h1>
+            <p>Scratch S2 图形化编程在线编辑器</p>
+        </div>
+        
+        <div class="content">
+            <h2><i class="fas fa-balance-scale"></i> 法律声明</h2>
+            <p>
+                本软件（<strong>Scratch S2 图形化编程在线编辑器</strong>，以下简称"本软件"）是一款基于Web技术的图形化编程学习工具，
+                旨在为编程初学者提供友好的学习环境。在使用本软件前，请您仔细阅读以下免责声明。
+                <strong>使用本软件即表示您已完全理解并同意接受本声明的所有条款。</strong>
+            </p>
+            
+            <h2><i class="fas fa-shield-alt"></i> 知识产权声明</h2>
+            <ol>
+                <li>
+                    <strong>本软件的原创性：</strong>本软件是由开发者独立设计并从头开发的原创作品。
+                    本软件的源代码、界面设计、功能实现均为开发者原创，不包含任何未经授权的第三方代码。
+                </li>
+                <li>
+                    <strong>界面设计灵感：</strong>本软件的界面设计和交互方式参考了MIT Scratch项目的公开设计规范，
+                    但所有代码均为原创实现，未复制或使用Scratch官方的任何源代码。
+                </li>
+                <li>
+                    <strong>Scratch商标：</strong>"Scratch"是麻省理工学院（MIT）的商标。
+                    本软件名称中使用"Scratch"仅为说明软件的功能类型，不构成商标侵权。
+                    本软件与MIT Scratch官方无任何官方关联。
+                </li>
+                <li>
+                    <strong>第三方库：</strong>本软件使用了若干开源库（如JSZip、Font Awesome等），
+                    这些库的使用遵循其各自的开源许可协议。
+                </li>
+            </ol>
+            
+            <div class="warning-box">
+                <h3><i class="fas fa-exclamation-circle"></i> 重要提示</h3>
+                <p>
+                    本软件<strong>并非</strong>MIT Scratch官方产品，也<strong>未获得</strong>MIT的官方认证或授权。
+                    本软件是一个独立的教育工具项目，旨在提供类似Scratch的学习体验。
+                </p>
+            </div>
+            
+            <h2><i class="fas fa-ban"></i> 免责条款</h2>
+            <ol>
+                <li>
+                    <strong>教育用途：</strong>本软件仅供编程学习和教育目的使用。
+                    用户不得将本软件用于任何商业目的或非法活动。
+                </li>
+                <li>
+                    <strong>无保证声明：</strong>本软件按"现状"提供，<strong>不提供任何形式的明示或默示保证</strong>，
+                    包括但不限于适销性、特定用途适用性或不侵权的保证。
+                </li>
+                <li>
+                    <strong>数据安全：</strong>虽然本软件努力保护用户数据安全，但开发者<strong>不对任何数据丢失承担赔偿责任</strong>。
+                    建议用户定期备份重要项目文件。
+                </li>
+                <li>
+                    <strong>功能限制：</strong>本软件仍在开发中，可能存在功能不完整或错误的情况。
+                    开发者不对软件的功能完整性或准确性作任何保证。
+                </li>
+                <li>
+                    <strong>第三方内容：</strong>用户在本软件中创作的内容（包括但不限于程序、图片、声音等）
+                    由用户自行负责。开发者不对用户创作的内容承担任何责任。
+                </li>
+                <li>
+                    <strong>免责范围：</strong>对于因使用或无法使用本软件而导致的任何直接、间接、附带、特殊、惩罚性或后果性损害，
+                    开发者<strong>不承担任何赔偿责任</strong>。
+                </li>
+            </ol>
+            
+            <h2><i class="fas fa-user-shield"></i> 用户责任</h2>
+            <p>使用本软件的用户应当：</p>
+            <ul>
+                <li>遵守所在地区的法律法规</li>
+                <li>不得利用本软件制作或传播违法内容</li>
+                <li>不得对他人作品进行抄袭或侵犯知识产权</li>
+                <li>妥善保管自己的创作作品，定期备份</li>
+                <li>理解软件可能存在缺陷，理性使用</li>
+            </ul>
+            
+            <div class="info-box">
+                <h3><i class="fas fa-heart"></i> 教育理念</h3>
+                <p>
+                    本软件致力于推广编程教育，降低编程学习门槛。
+                    我们相信图形化编程是引导初学者进入编程世界的最佳方式。
+                    希望本软件能帮助更多人发现编程的乐趣！
+                </p>
+            </div>
+            
+            <h2><i class="fas fa-code-branch"></i> 开源精神</h2>
+            <p>
+                本软件的开发秉承开源精神。我们鼓励学习者研究软件的设计原理，
+                但请尊重开发者的劳动成果，在使用或参考时注明出处。
+            </p>
+            
+            <h2><i class="fas fa-sync-alt"></i> 更新与变更</h2>
+            <p>
+                开发者保留随时更新、修改或终止本软件及其相关服务的权利，恕不另行通知。
+                本免责声明的最新版本始终适用于当前版本的软件使用。
+            </p>
+            
+            <h2><i class="fas fa-envelope"></i> 联系方式</h2>
+            <p>
+                如您对本声明有任何疑问，或发现软件存在问题，欢迎通过适当渠道反馈。
+                我们将认真对待每一条反馈意见。
+            </p>
+            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                返回编辑器
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p class="version">Scratch S2 图形化编程编辑器 v1.0.0</p>
+            <p class="date">声明更新日期：2026年4月11日</p>
+            <p style="margin-top: 15px; font-size: 13px;">
+                <i class="fas fa-puzzle-piece"></i> 
+                让编程学习变得简单有趣
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,573 @@
+/**
+ * Scratch S2 编辑器 - 动画样式
+ * 精心设计的各种动画效果
+ */
+
+/* ============================================
+   基础动画关键帧
+   ============================================ */
+
+/* 淡入 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 淡出 */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* 从上滑入 */
+@keyframes slideInUp {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 从下滑入 */
+@keyframes slideInDown {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 从左滑入 */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 从右滑入 */
+@keyframes slideInRight {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 缩放进入 */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 缩放退出 */
+@keyframes zoomOut {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+}
+
+/* 弹跳 */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: translateY(-10px);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+/* 摇晃 */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* 旋转 */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 脉冲 */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* 心跳 */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.15); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.15); }
+    70% { transform: scale(1); }
+}
+
+/* 闪烁 */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* 涟漪 */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   动画应用类
+   ============================================ */
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+.animate-slide-in-up {
+    animation: slideInUp 0.3s ease forwards;
+}
+
+.animate-slide-in-down {
+    animation: slideInDown 0.3s ease forwards;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft 0.3s ease forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.3s ease forwards;
+}
+
+.animate-zoom-in {
+    animation: zoomIn 0.3s ease forwards;
+}
+
+.animate-zoom-out {
+    animation: zoomOut 0.3s ease forwards;
+}
+
+.animate-bounce {
+    animation: bounce 0.6s ease infinite;
+}
+
+.animate-shake {
+    animation: shake 0.5s ease;
+}
+
+.animate-rotate {
+    animation: rotate 1s linear infinite;
+}
+
+.animate-pulse {
+    animation: pulse 1s ease infinite;
+}
+
+.animate-heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.animate-blink {
+    animation: blink 1s ease-in-out infinite;
+}
+
+/* ============================================
+   缓动函数（贝塞尔曲线）
+   ============================================ */
+
+.ease-linear { animation-timing-function: linear; }
+.ease-in { animation-timing-function: ease-in; }
+.ease-out { animation-timing-function: ease-out; }
+.ease-in-out { animation-timing-function: ease-in-out; }
+.ease-bounce { animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.ease-snap { animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+/* ============================================
+   过渡效果类
+   ============================================ */
+
+.transition-none { transition: none; }
+.transition-all { transition: all 0.3s ease; }
+.transition-fast { transition: all 0.15s ease; }
+.transition-slow { transition: all 0.5s ease; }
+.transition-transform { transition: transform 0.3s ease; }
+.transition-opacity { transition: opacity 0.3s ease; }
+.transition-colors { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+
+/* ============================================
+   悬停动画
+   ============================================ */
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.hover-grow:hover {
+    transform: scale(1.02);
+}
+
+.hover-shrink:hover {
+    transform: scale(0.98);
+}
+
+.hover-rotate:hover {
+    transform: rotate(5deg);
+}
+
+.hover-bright:hover {
+    filter: brightness(1.1);
+}
+
+.hover-dim:hover {
+    filter: brightness(0.9);
+}
+
+/* ============================================
+   点击动画
+   ============================================ */
+
+.click-shrink:active {
+    transform: scale(0.95);
+}
+
+.click-press:active {
+    transform: translateY(1px);
+}
+
+/* 涟漪效果 */
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-effect::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 50%;
+    transform: scale(1);
+    pointer-events: none;
+}
+
+.ripple-effect:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+/* ============================================
+   加载动画
+   ============================================ */
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+}
+
+.spinner.spinner-sm {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+}
+
+.spinner.spinner-lg {
+    width: 40px;
+    height: 40px;
+    border-width: 4px;
+}
+
+.spinner.spinner-white {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+}
+
+/* 点加载器 */
+.dots-loader {
+    display: flex;
+    gap: 4px;
+}
+
+.dots-loader span {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+.dots-loader span:nth-child(1) { animation-delay: 0s; }
+.dots-loader span:nth-child(2) { animation-delay: 0.2s; }
+.dots-loader span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+    0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 条形加载器 */
+.bar-loader {
+    width: 100%;
+    height: 4px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.bar-loader::after {
+    content: '';
+    display: block;
+    width: 25%;
+    height: 100%;
+    background: var(--primary);
+    animation: barSlide 1s ease-in-out infinite;
+}
+
+@keyframes barSlide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(400%); }
+}
+
+/* ============================================
+   精灵动画
+   ============================================ */
+
+/* 滑行 */
+.sprite-glide {
+    transition: left 0.5s linear, top 0.5s linear;
+}
+
+/* 淡入淡出 */
+.sprite-fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.sprite-fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+/* 出现效果 */
+.sprite-pop-in {
+    animation: zoomIn 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.sprite-pop-out {
+    animation: zoomOut 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* ============================================
+   舞台特效动画
+   ============================================ */
+
+/* 马赛克特效 */
+.effect-mosaic {
+    animation: mosaicEffect 0.3s ease;
+}
+
+@keyframes mosaicEffect {
+    0% { filter: none; }
+    50% { filter: url('#mosaic'); }
+    100% { filter: none; }
+}
+
+/* 鱼眼特效 */
+.effect-fisheye {
+    animation: fisheyeEffect 0.3s ease;
+}
+
+@keyframes fisheyeEffect {
+    0% { filter: none; }
+    50% { filter: url('#fisheye'); }
+    100% { filter: none; }
+}
+
+/* 漩涡特效 */
+.effect-whirl {
+    animation: whirlEffect 0.3s ease;
+}
+
+@keyframes whirlEffect {
+    0% { filter: none; }
+    50% { filter: url('#whirl'); }
+    100% { filter: none; }
+}
+
+/* ============================================
+   说话气泡动画
+   ============================================ */
+
+.speech-bubble {
+    animation: speechBubblePop 0.2s ease forwards;
+}
+
+@keyframes speechBubblePop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.speech-bubble-appear {
+    animation: speechBubbleAppear 0.3s ease forwards;
+}
+
+@keyframes speechBubbleAppear {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   UI元素动画
+   ============================================ */
+
+/* 按钮按下 */
+.btn-press {
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-press:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+/* 列表项滑入 */
+.list-item-enter {
+    animation: slideInLeft 0.3s ease forwards;
+}
+
+.list-item-exit {
+    animation: slideInRight 0.3s ease forwards;
+}
+
+/* 面板展开 */
+.panel-expand {
+    animation: panelExpand 0.3s ease forwards;
+}
+
+@keyframes panelExpand {
+    0% {
+        max-height: 0;
+        opacity: 0;
+    }
+    100% {
+        max-height: 500px;
+        opacity: 1;
+    }
+}
+
+/* 标签页切换 */
+.tab-switch-enter {
+    animation: tabSwitchIn 0.2s ease forwards;
+}
+
+@keyframes tabSwitchIn {
+    0% {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ============================================
+   游标/光标动画
+   ============================================ */
+
+.cursor-blink::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    font-weight: normal;
+}
+
+/* ============================================
+   延迟动画类
+   ============================================ */
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* ============================================
+   持续时间类
+   ============================================ */
+
+.duration-fast { animation-duration: 0.15s; }
+.duration-normal { animation-duration: 0.3s; }
+.duration-slow { animation-duration: 0.5s; }
+.duration-slower { animation-duration: 1s; }
+
+/* ============================================
+   无限循环
+   ============================================ */
+
+.infinite { animation-iteration-count: infinite; }
+.once { animation-iteration-count: 1; }
+.twice { animation-iteration-count: 2; }
